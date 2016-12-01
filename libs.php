@@ -14,3 +14,18 @@ function validerEnvoi($input) {
         }
     }
 }
+
+/**
+ * createArrayOfPostValues trouve les champs post qui possèdent un préfixe spécifié
+ * @param type $postValue est la sous-chaine à chercher
+ * @return array tableau contenant les champs trouvés
+ */
+function createArrayOfPostValues($postValue) {
+    $array = array();
+    foreach ($_REQUEST as $key => $value) {
+        if (strpos($key, $postValue) !== false) {
+            array_push($array, $value);
+        }
+    }
+    return $array;
+}

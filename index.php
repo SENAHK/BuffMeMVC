@@ -4,6 +4,7 @@ require_once './modeles/Utilisateur.php';
 require_once './modeles/Entrainement.php';
 require_once './modeles/Exercice.php';
 require_once './modeles/groupeMusculaire.php';
+require_once './libs.php';
 session_start();
 
 $user = new Utilisateur();
@@ -31,7 +32,7 @@ try {
             // Afficher les entrainements de l'utilisateur
             require './vues/vueEntrainements.php';
         } else {
-            throw new Exception("Identifiants non valides");
+            throw new Exception("Identifiants non valides !");
         }
     } else {
         // Formulaire d'ajout d'un entrainement
@@ -39,26 +40,39 @@ try {
             $idUser = array_keys($_SESSION['user'])[0];
             $nomEntrainement = filter_input(INPUT_POST, 'nomEntrainement', FILTER_SANITIZE_SPECIAL_CHARS);
             $descEntrainement = filter_input(INPUT_POST, 'descEntrainement', FILTER_SANITIZE_SPECIAL_CHARS);
-            $exercices = array();
+            $exercices;
 
-            foreach ($_REQUEST as $key => $value) {
-                if (strpos($key, "exercice") !== false) {
-                    array_push($exercices, $value);
-                }
+//            foreach ($_REQUEST as $key => $value) {
+//                if (strpos($key, "exercice") !== false) {
+//                    array_push($exercices, $value);
+//                }
+//            }
+
+            $exercices = createArrayOfPostValues("exercice");
+            $repetitions = createArrayOfPostValues("nbRep");
+            $series = createArrayOfPostValues("nbSerie");
+            
+            $tempArray = array();
+
+            for ($x = 0; $x < count($exercices); $x++) {
+
+                array_push($tempArray, array($exercices[$x] => array("nbRep" => $repetitions[$x], "nbSerie" => $series[$x])));
             }
+            var_dump($tempArray);
 
-            $training->insertEntrainement($idUser, $nomEntrainement, $descEntrainement, $exercices, "4", "12");
-            $entrainements = $training->getEntrainements($idUser);
 
+            //$training->insertEntrainement($idUser, $nomEntrainement, $descEntrainement, $tempArray);
+            //$entrainements = $training->getEntrainements($idUser);
             // Afficher les entrainements de l'utilisateur
-            require './vues/vueEntrainements.php';
+            //require './vues/vueEntrainements.php';
         } else {
             // L'utilisateur clique sur un entrainement
             if (isset($_GET['idWorkout'])) {
                 $idWorkout = intval($_GET['idWorkout']);
                 if ($idWorkout != 0) {
                     $entrainement = $training->getEntrainement($idWorkout);
-                    
+                    var_dump($entrainement);
+                    require './vues/vueEntrainement.php';
                 } else {
                     throw new Exception("Identifiant d'entrainement non valide");
                 }

@@ -30,7 +30,7 @@ if ($msgErreur) {
                     <input type="password" class="form-control <?= $class ?>" id="pass" name='password' value="Super">
 
                     <?php if ($msgErreur): ?>
-                        <div style="color: #a94442;">Identfiants erronés</div>
+                        <div style="color: #a94442;"><?= $e->getMessage(); ?></div>
                     <?php endif; ?>
 
                     <button type="submit" name='submit' class="btn btn-default">Buff me !</button>

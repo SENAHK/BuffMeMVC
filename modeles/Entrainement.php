@@ -25,7 +25,7 @@ class Entrainement extends Modele {
 //    }
     
     // TODO: add champs nbrep et nbserie dans le formulaire
-    public function insertEntrainement($idUtilisateur, $nomEntr, $descEntr, $exercices, $nbRep, $nbSerie) {
+    public function insertEntrainement($idUtilisateur, $nomEntr, $descEntr, $exercices) {
         try {
             $this->creerTransaction();
             $sql = "INSERT INTO entrainements VALUES('', :nom, :desc, :id)";
