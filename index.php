@@ -51,20 +51,26 @@ try {
             $exercices = createArrayOfPostValues("exercice");
             $repetitions = createArrayOfPostValues("nbRep");
             $series = createArrayOfPostValues("nbSerie");
-            
+
             $tempArray = array();
 
             for ($x = 0; $x < count($exercices); $x++) {
 
                 array_push($tempArray, array($exercices[$x] => array("nbRep" => $repetitions[$x], "nbSerie" => $series[$x])));
             }
-            var_dump($tempArray);
 
+            foreach ($tempArray as $value) {
+                foreach ($value as $val) {
+                    print_r($val['nbRep']);
+                    print "<br>";
+                }
+            }
 
-            //$training->insertEntrainement($idUser, $nomEntrainement, $descEntrainement, $tempArray);
-            //$entrainements = $training->getEntrainements($idUser);
+            //var_dump($idExercice);
+            $training->insertEntrainement($idUser, $nomEntrainement, $descEntrainement, $tempArray);
+            $entrainements = $training->getEntrainements($idUser);
             // Afficher les entrainements de l'utilisateur
-            //require './vues/vueEntrainements.php';
+            require './vues/vueEntrainements.php';
         } else {
             // L'utilisateur clique sur un entrainement
             if (isset($_GET['idWorkout'])) {

@@ -18,13 +18,6 @@ class Entrainement extends Modele {
         return $resultat;
     }
 
-//    public function insertEntrainements($idUtilisateur, $nomEntr, $descEntr) {
-//        $sql = "INSERT INTO entrainements VALUES('', :nom, :desc, :id)";
-//        $resultat = $this->executerRequete($sql, [":nom" => $nomEntr, ":desc" => $descEntr, "id" => $idUtilisateur], true);
-//        return $resultat;
-//    }
-    
-    // TODO: add champs nbrep et nbserie dans le formulaire
     public function insertEntrainement($idUtilisateur, $nomEntr, $descEntr, $exercices) {
         try {
             $this->creerTransaction();
@@ -32,7 +25,12 @@ class Entrainement extends Modele {
             $lastId = $this->executerRequete($sql, [":nom" => $nomEntr, ":desc" => $descEntr, "id" => $idUtilisateur], true);
 
             foreach ($exercices as $exercice) {
-                $this->insertComposer($exercice, $lastId, $nbRep, $nbSerie);
+                $idExercice = array_keys($exercice)[0];
+                foreach ($exercice as $infos) {
+                    $nbRep = $infos['nbRep'];
+                    $nbSerie = $infos['nbSerie'];
+                }
+                $this->insertComposer($idExercice, $lastId, $nbRep, $nbSerie);
             }
 
             $this->commit();
