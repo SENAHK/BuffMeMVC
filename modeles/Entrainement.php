@@ -12,7 +12,11 @@ class Entrainement extends Modele {
     }
 
     public function getEntrainement($idEntrainement) {
-        $sql = "SELECT * from composer where idEntrainement=?";
+        $sql = "SELECT nomExercice, nbSerie, nbRep "
+                . "from composer "
+                . "natural join entrainements "
+                . "natural join exercices "
+                . "where idEntrainement=?";
         $entrainements = $this->executerRequete($sql, [$idEntrainement]);
         $resultat = $entrainements->fetchAll(PDO::FETCH_ASSOC);
         return $resultat;
