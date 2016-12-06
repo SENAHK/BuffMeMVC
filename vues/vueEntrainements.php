@@ -5,7 +5,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-pills nav-stacked">
                 <li class="active"><a href="#" class="active">Entrainements <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Exercices</a></li>
+                <li><a href="?action=exercices">Exercices</a></li>
                 <li><a href="#">Muscles</a></li>
             </ul>
         </div>

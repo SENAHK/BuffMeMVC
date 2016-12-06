@@ -26,9 +26,9 @@ try {
                 $_SESSION['user'] = array();
                 array_push($_SESSION['user'], $idUser);
                 array_push($_SESSION['user'], $nomUtilisateur);
-                
+
                 $entrainements = $training->getEntrainements($idUser);
-                
+
                 // Afficher les entrainements de l'utilisateur
                 require './vues/vueEntrainements.php';
             } else {
@@ -38,27 +38,18 @@ try {
             $msgErreur = FALSE;
             require './vues/vueLogin.php';  // action par défaut  
         }
-
-//        // Si login réussi
-//        if (isset($_SESSION['user'])) {
-//            //$idUser = $user->getIdUser($nomUtilisateur)[0];
-//            $entrainements = $training->getEntrainements($idUser);
-//            $_SESSION['entrainements'] = $entrainements;
-//            //$_SESSION['user'] = array($idUser => $nomUtilisateur);
-//
-//            $groupesMusculaires = $gm->getGroupesMusculaires();
-//            $_SESSION['groupesMusculaires'] = $groupesMusculaires;
-//            // Afficher les entrainements de l'utilisateur
-//            require './vues/vueEntrainements.php';
-//        }
     } else {
+        // Sélection d'un entrainement
         if (isset($_GET['idWorkout'])) {
             $idWorkout = intval($_GET['idWorkout']);
             if ($idWorkout != 0) {
                 $entrainement = $training->getEntrainement($idWorkout);
+//                if (empty($entrainement)) {
+//                    throw new Exception("Identifiant d'entrainement non valide");
+//                }
                 require './vues/vueEntrainement.php';
             } else {
-                throw new Exception("Identifiant d'entrainement non valide");
+                
             }
         } else {
             // Formulaire d'ajout d'un entrainement
@@ -78,13 +69,13 @@ try {
                 }
 
                 $training->insertEntrainement($idUser, $nomEntrainement, $descEntrainement, $tempArray);
+                $training = new Entrainement();
                 $entrainements = $training->getEntrainements($idUser);
             }
+            // Affichage des entrainements
             $idUser = $_SESSION['user'][0];
             $nomUtilisateur = $_SESSION['user'][1];
-            echo $nomUtilisateur;
-            //$idUser = $user->getIdUser($nomUtilisateur)[0];
-            
+
             $entrainements = $training->getEntrainements($idUser);
             $groupesMusculaires = $gm->getGroupesMusculaires();
             $_SESSION['groupesMusculaires'] = $groupesMusculaires;

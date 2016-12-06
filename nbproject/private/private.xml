@@ -3,16 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/modeles/groupeMusculaire.php</file>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/vues/modalEntrainement.php</file>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/js/myScript.js</file>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/vues/vueEntrainements.php</file>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/modeles/ajax/getExercices.php</file>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/vues/template.php</file>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/modeles/Entrainement.php</file>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/modeles/ajax/addInput.php</file>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/modeles/Modele.php</file>
-            <file>file:/C:/Users/ramusim_info/Desktop/BuffMeMVC/index.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/modeles/Modele.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/modeles/Utilisateur.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/vues/vueEntrainements.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/vues/modalEntrainement.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/modeles/Entrainement.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/libs.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/vues/vueEntrainement.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/index.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/vues/vueLogin.php</file>
+            <file>file:/E:/School/BuffMeMVC/BuffMeMVC/vues/template.php</file>
         </group>
     </open-files>
 </project-private>
