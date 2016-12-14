@@ -48,34 +48,6 @@ $(function () {
                     }
                 }
                 id++;
-
-//            if (nbRep.length) {
-
-                // Si l'utilisateur entre autre chose qu'un nombre
-//                if (isNaN(nbRep.val())) {
-//                    nbRep.closest('.input-group').addClass('has-error');
-//                    nbRep.removeClass('has-success').addClass('has-error');
-//                    $('#nbRep_error' + id).text('Entrez un chiffre !');
-//                     e.preventDefault();
-//                } else {
-//                    nbRep.closest('.input-group').removeClass('has-error');
-//                    nbRep.removeClass('has-error');
-//                    $('#nbRep_error' + id).text('');
-//                }
-//                
-//                if (isNaN(nbSerie.val())) {
-//                    nbSerie.closest('.input-group').addClass('has-error');
-//                    nbSerie.removeClass('has-success').addClass('has-error');
-//                    $('#nbSerie_error' + id).text('Entrez un chiffre !');
-//                     e.preventDefault();
-//                } else {
-//                    nbSerie.closest('.input-group').removeClass('has-error');
-//                    nbSerie.removeClass('has-error');
-//                    $('#nbSerie_error' + id).text('');
-//                }
-//                id++;
-
-
             } else {
                 flag = false;
             }
