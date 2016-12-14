@@ -9,6 +9,7 @@ require_once './modeles/groupeMusculaire.php';
 require_once './libs.php';
 
 $user = new Utilisateur();
+$exo = new Exercice();
 $training = new Entrainement();
 $gm = new groupeMusculaire();
 $_SESSION['nbInput'] = 1;
@@ -41,7 +42,17 @@ try {
     } else {
 
         if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'exercices') {
-            require './vues/vueExercices.php';
+            $muscles = $gm->getGroupesMusculaires();
+            ob_start();
+            foreach ($muscles as $muscle) {
+                extract($muscle);
+                $exercices = $exo->getExercicesByGm($idGm);
+                //print_r($exercicesByGm);
+
+                require './vues/vueExercices.php';
+            }
+            $contenu = ob_get_clean();
+            require './vues/template.php';
         } else {
             // Sélection d'un entrainement
             if (isset($_GET['idWorkout'])) {
@@ -76,14 +87,15 @@ try {
                     $training = new Entrainement();
                     $entrainements = $training->getEntrainements($idUser);
                 }
-                // Affichage des entrainements
+                
+                // Afficher les entrainements de l'utilisateur
                 $idUser = $_SESSION['user'][0];
                 $nomUtilisateur = $_SESSION['user'][1];
 
                 $entrainements = $training->getEntrainements($idUser);
                 $groupesMusculaires = $gm->getGroupesMusculaires();
-                $_SESSION['groupesMusculaires'] = $groupesMusculaires;
-                // Afficher les entrainements de l'utilisateur
+                $_SESSION['groupesMusculaires'] = $groupesMusculaires;                
+                
                 require './vues/vueEntrainements.php';
             }
         }

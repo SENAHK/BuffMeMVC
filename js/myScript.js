@@ -1,12 +1,14 @@
+// Quand le document HTML est chargé
 $(function () {
-    // Lors du submit de l'ajout d'un entrainement
+    
+    // Lors du submit du login
     $('#formLogin').on('submit', function (e) {
 
         //___ Validation username ___
         var username = $('#user');
         // Check si une valeur est entrée
         if (!username.val()) {
-            // Ajoute un avertissement visuel d'erreur
+            // Ajoute un visuel d'erreur
             username.closest('.form-group').removeClass('has-success').addClass('has-error');
 
             // Stop l'envoi du formulaire
@@ -17,7 +19,7 @@ $(function () {
 
     });
 
-    //___Validation formulaire d'ajout d'un entrainement___
+    //Lors du submit de l'ajout d'un entrainement
     $('#formAjout').on('submit', function (e) {
 
         var nbRep = $('#nbRep');
