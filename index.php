@@ -39,48 +39,53 @@ try {
             require './vues/vueLogin.php';  // action par défaut  
         }
     } else {
-        // Sélection d'un entrainement
-        if (isset($_GET['idWorkout'])) {
-            $idWorkout = intval($_GET['idWorkout']);
-            if ($idWorkout != 0) {
-                $entrainement = $training->getEntrainement($idWorkout);
+
+        if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'exercices') {
+            require './vues/vueExercices.php';
+        } else {
+            // Sélection d'un entrainement
+            if (isset($_GET['idWorkout'])) {
+                $idWorkout = intval($_GET['idWorkout']);
+                if ($idWorkout != 0) {
+                    $entrainement = $training->getEntrainement($idWorkout);
 //                if (empty($entrainement)) {
 //                    throw new Exception("Identifiant d'entrainement non valide");
 //                }
-                require './vues/vueEntrainement.php';
-            } else {
-                
-            }
-        } else {
-            // Formulaire d'ajout d'un entrainement
-            if (isset($_REQUEST['btnAjoutEntrainement'])) {
-                $idUser = array_keys($_SESSION['user'])[0];
-                $nomEntrainement = filter_input(INPUT_POST, 'nomEntrainement', FILTER_SANITIZE_SPECIAL_CHARS);
-                $descEntrainement = filter_input(INPUT_POST, 'descEntrainement', FILTER_SANITIZE_SPECIAL_CHARS);
-
-                $exercices = createArrayOfPostValues("exercice");
-                $repetitions = createArrayOfPostValues("nbRep");
-                $series = createArrayOfPostValues("nbSerie");
-
-                $tempArray = array();
-
-                for ($x = 0; $x < count($exercices); $x++) {
-                    array_push($tempArray, array($exercices[$x] => array("nbRep" => $repetitions[$x], "nbSerie" => $series[$x])));
+                    require './vues/vueEntrainement.php';
+                } else {
+                    
                 }
+            } else {
+                // Formulaire d'ajout d'un entrainement
+                if (isset($_REQUEST['btnAjoutEntrainement'])) {
+                    $idUser = array_keys($_SESSION['user'])[0];
+                    $nomEntrainement = filter_input(INPUT_POST, 'nomEntrainement', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $descEntrainement = filter_input(INPUT_POST, 'descEntrainement', FILTER_SANITIZE_SPECIAL_CHARS);
 
-                $training->insertEntrainement($idUser, $nomEntrainement, $descEntrainement, $tempArray);
-                $training = new Entrainement();
+                    $exercices = createArrayOfPostValues("exercice");
+                    $repetitions = createArrayOfPostValues("nbRep");
+                    $series = createArrayOfPostValues("nbSerie");
+
+                    $tempArray = array();
+
+                    for ($x = 0; $x < count($exercices); $x++) {
+                        array_push($tempArray, array($exercices[$x] => array("nbRep" => $repetitions[$x], "nbSerie" => $series[$x])));
+                    }
+
+                    $training->insertEntrainement($idUser, $nomEntrainement, $descEntrainement, $tempArray);
+                    $training = new Entrainement();
+                    $entrainements = $training->getEntrainements($idUser);
+                }
+                // Affichage des entrainements
+                $idUser = $_SESSION['user'][0];
+                $nomUtilisateur = $_SESSION['user'][1];
+
                 $entrainements = $training->getEntrainements($idUser);
+                $groupesMusculaires = $gm->getGroupesMusculaires();
+                $_SESSION['groupesMusculaires'] = $groupesMusculaires;
+                // Afficher les entrainements de l'utilisateur
+                require './vues/vueEntrainements.php';
             }
-            // Affichage des entrainements
-            $idUser = $_SESSION['user'][0];
-            $nomUtilisateur = $_SESSION['user'][1];
-
-            $entrainements = $training->getEntrainements($idUser);
-            $groupesMusculaires = $gm->getGroupesMusculaires();
-            $_SESSION['groupesMusculaires'] = $groupesMusculaires;
-            // Afficher les entrainements de l'utilisateur
-            require './vues/vueEntrainements.php';
         }
     }
 } catch (Exception $e) {

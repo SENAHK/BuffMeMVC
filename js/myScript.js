@@ -28,39 +28,58 @@ $(function () {
 
         while (flag) {
             nbRep = $('#nbRep' + id);
-            
+            nbSerie = $('#nbSerie' + id);
+            var champs = [nbRep, nbSerie];
+
             // Si l'élement existe
-            if (nbRep.length) {
-                if (isNaN(nbRep.val())) {
-                    nbRep.closest('.input-group').addClass('has-error');
-                    nbRep.removeClass('has-success').addClass('has-error');
-                    $('#nbRep_error' + id).text('Entrez un chiffre !');
-
-                    e.preventDefault();
+            if (champs[0].length) {
+                for (i = 0; i < champs.length; i++) {
+                    // Si l'utilisateur entre autre chose qu'un nombre
+                    champ = champs[i];
+                    if (isNaN(champ.val())) {
+                        champ.closest('.input-group').addClass('has-error');
+                        champ.removeClass('has-success').addClass('has-error');
+                        champ.parent().next().text('entrez un chiffre !');
+                        e.preventDefault();
+                    } else {
+                        champ.closest('.input-group').removeClass('has-error');
+                        champ.removeClass('has-error');
+                        champ.parent().next().text('');
+                    }
                 }
                 id++;
+
+//            if (nbRep.length) {
+
+                // Si l'utilisateur entre autre chose qu'un nombre
+//                if (isNaN(nbRep.val())) {
+//                    nbRep.closest('.input-group').addClass('has-error');
+//                    nbRep.removeClass('has-success').addClass('has-error');
+//                    $('#nbRep_error' + id).text('Entrez un chiffre !');
+//                     e.preventDefault();
+//                } else {
+//                    nbRep.closest('.input-group').removeClass('has-error');
+//                    nbRep.removeClass('has-error');
+//                    $('#nbRep_error' + id).text('');
+//                }
+//                
+//                if (isNaN(nbSerie.val())) {
+//                    nbSerie.closest('.input-group').addClass('has-error');
+//                    nbSerie.removeClass('has-success').addClass('has-error');
+//                    $('#nbSerie_error' + id).text('Entrez un chiffre !');
+//                     e.preventDefault();
+//                } else {
+//                    nbSerie.closest('.input-group').removeClass('has-error');
+//                    nbSerie.removeClass('has-error');
+//                    $('#nbSerie_error' + id).text('');
+//                }
+//                id++;
+
+
             } else {
                 flag = false;
             }
         }
-
-        while (flag) {
-            nbSerie = $('#nbRep' + id);
-            if (nbSerie.length) {
-                if (isNaN(nbSerie.val())) {
-                    nbSerie.closest('.input-group').addClass('has-error');
-                    nbSerie.removeClass('has-success').addClass('has-error');
-                    $('#nbRep_error' + id).text('Entrez un chiffre !');
-
-                    e.preventDefault();
-                }
-                id++;
-            } else {
-                flag = false;
-            }
-
-        }
-
     });
 
 });

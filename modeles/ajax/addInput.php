@@ -32,15 +32,19 @@
                 </select>
                 <label for='gm'>Exercice</label>
                 <select class='form-control' name='<?= $idEx ?>' id="<?= $idEx ?>"></select>
+
                 <div class="input-group">
                     <span class="input-group-addon">Séries</span>
                     <input type="text" clasS="form-control" name="<?= $nbSerie ?>" id="<?= $nbSerie ?>" value="4">
                 </div>
+                <label id="nbSerie_error<?= $nb ?>" class="help-block text-danger"></label>
+                
                 <div class="input-group">
                     <span class="input-group-addon">Répétitions</span>
                     <input type="text" clasS="form-control" name="<?= $nbRep ?>" id="<?= $nbRep ?>" value="12">
                 </div>
-                <label id="nbRep_error<?=$nb?>" class="help-block text-danger"></label>
+                <label id="nbRep_error<?= $nb ?>" class="help-block text-danger"></label>
+                
             </div>
         </div>
     </div>

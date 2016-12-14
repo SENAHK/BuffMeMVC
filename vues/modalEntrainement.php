@@ -42,12 +42,14 @@
                                     <label for='gm'>Exercice</label>
                                     <select class='form-control' name="exercice1" id="exercice1"></select>
                                     <br>
+                                    <div id="ex"
                                     <div class="input-group">
                                         <span class="input-group-addon">Séries</span>
-                                        <input type="text" clasS="form-control" name="nbSerie1" id="nbSerie" value="4">
+                                        <input type="text" clasS="form-control" name="nbSerie1" id="nbSerie1" value="4">
                                         <br>
                                     </div>
-                                    <label id="nbSerie_error" class="help-block text-danger"></label>
+                                    <label id="nbSerie_error1" class="help-block text-danger"></label>
+                                    
                                     <div class="input-group">
                                         <span class="input-group-addon">Répétitions</span>
                                         <input type="text" clasS="form-control" name="nbRep1" id="nbRep1" value="12">
