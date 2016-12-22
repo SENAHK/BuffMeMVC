@@ -1,0 +1,9 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}RAMUSI Michael - CFPT
+${licensePrefix}2016-2017
+${licensePrefix}BuffMeMVC
+<#if licenseLast??>
+${licenseLast}
+</#if>

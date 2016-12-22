@@ -1,5 +1,9 @@
 <?php
-
+/* 
+ * RAMUSI Michael - CFPT
+ * 2016-2017
+ * BuffMeMVC
+ */
 DEFINE('DB_HOST', "127.0.0.1");
 DEFINE('DB_NAME', "buffme");
 DEFINE('DB_USER', "buffme_admin");

@@ -1,4 +1,9 @@
 <?php
+/* 
+ * RAMUSI Michael - CFPT
+ * 2016-2017
+ * BuffMeMVC
+ */
 
 /**
  * validerEnvoi permet de vérifier que les données envoyées ne sont pas vides
@@ -22,7 +27,7 @@ function validerEnvoi($input) {
  */
 function createArrayOfPostValues($postValue) {
     $array = array();
-    foreach ($_REQUEST as $key => $value) {
+    foreach ($_POST as $key => $value) {
         if (strpos($key, $postValue) !== false) {
             array_push($array, $value);
         }

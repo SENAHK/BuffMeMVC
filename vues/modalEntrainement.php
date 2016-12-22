@@ -13,9 +13,9 @@
                     <div id="formWithoutSubmit">
                         <div class="form-group">
 
-                            <label for="user">Nom de l'entrainement</label>
+                            <label for="nomEntrainement">Nom de l'entrainement</label>
 
-                            <input type="text" class="form-control" name='nomEntrainement' id="user">
+                            <input type="text" class="form-control" name='nomEntrainement' id="nomEntrainement">
                         </div>
 
                         <div class="form-group">
@@ -45,7 +45,7 @@
                                     <div id="ex"
                                     <div class="input-group">
                                         <span class="input-group-addon">Séries</span>
-                                        <input type="text" clasS="form-control" name="nbSerie1" id="nbSerie1" value="4">
+                                        <input type="text" class="form-control" name="nbSerie1" id="nbSerie1" value="4">
                                         <br>
                                     </div>
                                     <label id="nbSerie_error1" class="help-block text-danger"></label>

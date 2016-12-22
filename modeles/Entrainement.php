@@ -1,5 +1,9 @@
 <?php
-
+/* 
+ * RAMUSI Michael - CFPT
+ * 2016-2017
+ * BuffMeMVC
+ */
 require_once __DIR__ . '/Modele.php';
 
 class Entrainement extends Modele {
